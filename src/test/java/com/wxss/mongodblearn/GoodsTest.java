@@ -34,17 +34,27 @@ public class GoodsTest {
         System.out.println("测试 eq 查询...");
         for (Goods good : goods) {
             System.out.println(good);
-//        }
+        }
 
-            QGoods qGoods1 = new QGoods("goods");
-            BooleanExpression gt = qGoods1.count.gt(100L);
+        QGoods qGoods1 = new QGoods("goods");
+        BooleanExpression gt = qGoods1.count.gt(100L);
 //        BooleanExpression between = qGoods1.price.between(new BigDecimal(100),new BigDecimal(200));
-            goods = (List<Goods>) goodsRepo.findAll(gt);
-            System.out.println("测试 between 查询...");
-            for (Goods goods1 : goods) {
-                System.out.println(goods1);
-            }
+        goods = (List<Goods>) goodsRepo.findAll(gt);
+        System.out.println("测试 between 查询...");
+        for (Goods goods1 : goods) {
+            System.out.println(goods1);
+        }
 
+    }
+
+    @Test
+    public void testQuery2() {
+        QGoods goods = QGoods.goods;
+        BooleanExpression expression = goods.goodsName.eq("aaa");
+        Iterable<Goods> iterable = goodsRepo.findAll(expression);
+        for (Goods value : iterable) {
+            System.out.println(value);
         }
     }
+
 }

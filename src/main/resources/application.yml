@@ -1,5 +1,12 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost/test
+      url: mongodb://test:admin13579@127.0.0.1:27017/test?authSource=test&authMechanism=SCRAM-SHA-1
+#      uri: mongodb://localhost/test
+#      authentication-database: test
+#      username: test
+#      password: admin13579
+
+
+
 
