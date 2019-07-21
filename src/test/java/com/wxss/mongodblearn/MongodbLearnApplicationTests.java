@@ -18,12 +18,11 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MongodbLearnApplicationTests {
-    MongoDatabase db = MongoUtils.getMongoDatabase("test");
+    MongoDatabase db = MongoUtils.getMongoDatabaseWithAuth("test");
 
     @Test
     public void testGet() {
         MongoCollection<Document> goodsCol = db.getCollection("goods");
-
         List<Document> documents = new ArrayList<>();
         Document document = new Document();
         document.append("name", "ccc");
@@ -31,20 +30,20 @@ public class MongodbLearnApplicationTests {
         document.append("status", false);
         documents.add(document);
         // 插入一个
-//        goodsCol.insertOne(document);
+        goodsCol.insertOne(document);
         // 插入多个
-        document = new Document();
-        document.append("name", "bbb");
-        document.append("price", 321);
-        document.append("status", false);
-        documents.add(document);
-
-        document = new Document();
-        document.append("name", "bbb");
-        document.append("price", 321);
-        document.append("status", false);
-        documents.add(document);
-        goodsCol.insertMany(documents);
+//        document = new Document();
+//        document.append("name", "bbb");
+//        document.append("price", 321);
+//        document.append("status", false);
+//        documents.add(document);
+//
+//        document = new Document();
+//        document.append("name", "bbb");
+//        document.append("price", 321);
+//        document.append("status", false);
+//        documents.add(document);
+//        goodsCol.insertMany(documents);
         // 查询
         FindIterable<Document> findIterable = goodsCol.find();
         for (Document value : findIterable) {
@@ -97,6 +96,9 @@ public class MongodbLearnApplicationTests {
         for (Document document : findIterable) {
             System.out.println(document);
         }
+
+//        Bson bson = Filter;
+//        users.deleteMany(bson);
         // 删除
         findIterable = users.find();
         System.out.println("删除后...");

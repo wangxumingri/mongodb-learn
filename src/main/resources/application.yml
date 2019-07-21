@@ -1,11 +1,23 @@
+server:
+  port: 31001
 spring:
+  application:
+    name: xc-service-manage-cms
+
   data:
     mongodb:
-      url: mongodb://test:admin13579@127.0.0.1:27017/test?authSource=test&authMechanism=SCRAM-SHA-1
-#      uri: mongodb://localhost/test
-#      authentication-database: test
-#      username: test
-#      password: admin13579
+      uri: mongodb://root:admin13579@localhost:27017
+      database: xc_cms
+#spring:
+#  data:
+#    mongodb:
+#      database: xc_cms
+#      url: mongodb://root:admin13579@localhost:27017
+##      url: mongodb://test:admin13579@127.0.0.1:27017/test?authSource=test&authMechanism=SCRAM-SHA-1
+##      uri: mongodb://localhost/test
+##      authentication-database: test
+##      username: test
+##      password: admin13579
 
 
 
